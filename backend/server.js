@@ -1,23 +1,28 @@
 //constantes
 const express = require('express');
-const bodyPaser = require('body-parser');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 
+//fichier de route
 const routes = require('./src/routes/signRoutes');
+//fichier variable d env
+dotenv.config({ path: '.env-local' });
 
 //autres constantes
+const PORT = process.env.PORT || '3001';
 const app = express();
-const PORT = 3000;
 
 //passage des routes
 routes(app);
 
-//utilisations
+//middleware
 app.use(express.json());
-app.use(bodyPaser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', (req, res, next) => {
-    res.send(`<h1>Server du projet Signature sur le port ${PORT}</h1>`)
+    res.status(200).json({ serverPort: `${PORT}`, status: 'running' });
     return;
+    //res.send(`<h1>Server du projet Signature sur le port ${PORT}</h1>`)
 })
 
 //ecoute du port
