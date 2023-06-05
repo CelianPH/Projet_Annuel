@@ -2,8 +2,14 @@
 const express = require('express');
 const bodyPaser = require('body-parser');
 
+const routes = require('./src/routes/signRoutes');
+
+//autres constantes
 const app = express();
 const PORT = 3000;
+
+//passage des routes
+routes(app);
 
 //utilisations
 app.use(express.json());

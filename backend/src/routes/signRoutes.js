@@ -1,10 +1,20 @@
-const express = require('express');
-const router = express.Router();
+const routes = (app) => {
+    //premiere route pour test
+    app.route('/testEndpoint') 
+    .get((req, res) =>
+        res.send('demande GET avec succès')) //endpoint1
 
-const userRoutes = require('./userRoutes');
-const postRoutes = require('./postRoutes');
+    .post((req, res) =>
+        res.send('demande POST avec succès')); //endpoint2
 
-router.use('/users', userRoutes);
-router.use('/posts', postRoutes);
+    //deuxieme route de test
+    app.route('/testEndpoint/:testId')
+    .put((req, res) =>
+        res.send('demande PUT avec succès')) //endpoint3
 
-module.exports = router;
+    .delete((req, res) => 
+        res.send('demande DELETE avec succès')); //endpoint4
+}
+
+//acces depuis server.js
+module.exports = routes;
