@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
 //fichier de route
-const routes = require('./src/routes/signRoutes');
+//const signRoutes = require('./src/routes/signRoutes');
+const userRoutes = require('./src/routes/userRoutes');
 //fichier variable d env
 dotenv.config({ path: '.env-local' });
 
@@ -13,7 +14,9 @@ const PORT = process.env.PORT || '3001';
 const app = express();
 
 //passage des routes
-routes(app);
+//signRoutes(app);
+//app.use('/', signRoutes);
+app.use('/user', userRoutes);
 
 //middleware
 app.use(express.json());

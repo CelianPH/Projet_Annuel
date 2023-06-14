@@ -2,6 +2,6 @@
 PORT=3000
 //Database
 DB_HOST=localhost
-DB_USER=signUser
-DB_PASS=signPass
+DB_USER=ph
+DB_PASS='' //signpass
 DB_NAME=signature

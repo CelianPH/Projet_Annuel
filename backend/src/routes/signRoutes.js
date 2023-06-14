@@ -1,4 +1,4 @@
-const routes = (app) => {
+const signRoutes = (app) => {
     //premiere route pour test
     app.route('/testEndpoint') 
     .get((req, res) =>
@@ -14,7 +14,8 @@ const routes = (app) => {
 
     .delete((req, res) => 
         res.send('demande DELETE avec succès')); //endpoint4
+
 }
 
 //acces depuis server.js
-module.exports = routes;
+module.exports = signRoutes;
