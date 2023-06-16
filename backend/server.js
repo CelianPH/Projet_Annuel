@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 //const signRoutes = require('./src/routes/signRoutes');
 const userRoutes = require('./src/routes/userRoutes');
 //fichier variable d env
-dotenv.config({ path: '.env-local' });
+dotenv.config({ path: '.local-env' });
 
 //autres constantes
 const PORT = process.env.PORT || '3001';
