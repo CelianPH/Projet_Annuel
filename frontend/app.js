@@ -11,4 +11,17 @@ function App() {
 
   export default App;
 
-  
+//import { useState } from 'react'
+//
+//const Hi = (props) => {
+//  const {num} = props;
+//  return (
+//    <div>Yolo {num}.</div>
+//  )
+//}
+//
+//function App() {
+//  const [number, setNumber] = useState(0);
+//
+//  const add = () => 
+//}

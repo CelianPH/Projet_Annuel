@@ -6,7 +6,7 @@ const UserComponent = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch('/user/123'); // Remplacez 123 par l'ID de l'utilisateur souhaité
+        const response = await fetch('/user/11'); // Remplacez 11 par l'ID de l'utilisateur souhaité
         const data = await response.json();
         setUser(data);
       } catch (error) {
