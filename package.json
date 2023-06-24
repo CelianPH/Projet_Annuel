@@ -8,7 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon backend/server.js",
     "startclient": "react-scripts start",
-    "client": "nodemon frontend/index.js"
+    "client": "nodemon frontend/src/index.js",
+    "build": "react-scripts build",
+    "testclient": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
