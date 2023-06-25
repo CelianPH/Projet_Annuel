@@ -22,7 +22,7 @@ etudiantRoutes.post('/', async function(req, res) {
     try {
       const { nom, prenom, mail, chp_motPasSe_CY, etu_nb_retard, etu_nb_absence, code_ecole, code_promotion } = req.body;
   
-      const sqlQuery = 'INSERT INTO signature.utilisateur (nom, prenom, mail, chp_motPasSe_CY, etu_nb_retard, etu_nb_absence, code_ecole, code_promotion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+      const sqlQuery = 'INSERT INTO signature.utilisateur (nom, prenom, mail, chp_motPasSe_CY, etu_nb_retard, etu_nb_absence, code_ecole, code_promotion, code_role, code_droit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, 1)';
   
       const result = await pool.query(sqlQuery, [nom, prenom, mail, chp_motPasSe_CY, etu_nb_retard, etu_nb_absence, code_ecole, code_promotion]);
   
@@ -33,24 +33,6 @@ etudiantRoutes.post('/', async function(req, res) {
 });
 
 //modifier les infos etudiant par son id
-  
-
-//supprimer un etudiant par son id
-etudiantRoutes.delete('/:id', async function(req, res) {
-    try {
-        const sqlQuery = 'DELETE FROM signature.utilisateur WHERE code_utilisateur=?';
-        const result = await pool.query(sqlQuery, req.params.id);
-        
-        if (result.affectedRows > 0) {
-            res.status(200).json({ message: 'Etudiant supprimé avec succès' });
-        } else {
-            res.status(404).json({ message: 'Etudiant non trouvé' });
-        }
-    } catch (error) {
-        res.status(400).send(error.message);
-    }
-});
-
 etudiantRoutes.put('/:id', async function(req, res) {
     try {
         const code_utilisateur = req.params.id;
@@ -69,6 +51,22 @@ etudiantRoutes.put('/:id', async function(req, res) {
         res.status(200).json({ success: true });
     } catch (error) {
         res.status(400).json({ error: error.message });
+    }
+});
+
+//supprimer un etudiant par son id
+etudiantRoutes.delete('/:id', async function(req, res) {
+    try {
+        const sqlQuery = 'DELETE FROM signature.utilisateur WHERE code_utilisateur=?';
+        const result = await pool.query(sqlQuery, req.params.id);
+        
+        if (result.affectedRows > 0) {
+            res.status(200).json({ message: 'Etudiant supprimé avec succès' });
+        } else {
+            res.status(404).json({ message: 'Etudiant non trouvé' });
+        }
+    } catch (error) {
+        res.status(400).send(error.message);
     }
 });
 

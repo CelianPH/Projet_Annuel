@@ -4,9 +4,13 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
 //fichier de route
-//const signRoutes = require('./src/routes/signRoutes');
-const userRoutes = require('./src/routes/userRoutes');
 const etudiantRoutes = require('./src/routes/etudiantRoutes');
+const intervenantRoutes = require('./src/routes/intervenantRoutes');
+const attachePromRoutes = require('./src/routes/attachePromRoutes');
+const responsablePedaRoutes = require('./src/routes/responsablePedaRoutes');
+const directionRoutes = require('./src/routes/directionRoutes');
+
+
 //fichier variable d env
 dotenv.config({ path: './.local-env' });
 
@@ -21,8 +25,11 @@ app.use(bodyParser.json());
 //passage des routes
 //signRoutes(app);
 //app.use('/', signRoutes);
-app.use('/user', userRoutes);
 app.use('/etudiant', etudiantRoutes);
+app.use('/intervenant', intervenantRoutes);
+app.use('/attacheProm', attachePromRoutes);
+app.use('/responsablePeda', responsablePedaRoutes);
+app.use('/direction', directionRoutes);
 
 app.use('/', (req, res, next) => {
     res.status(200).json({ serverPort: `${PORT}`, status: 'running' });
