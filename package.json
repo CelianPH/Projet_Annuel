@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon backend/server.js",
+    "startserver": "nodemon backend/server.js",
     "startclient": "react-scripts start",
     "client": "nodemon frontend/src/index.js",
     "build": "react-scripts build",
