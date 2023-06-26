@@ -11,6 +11,14 @@ const responsablePedaRoutes = require('./src/routes/responsablePedaRoutes');
 const directionRoutes = require('./src/routes/directionRoutes');
 const ecoleRoutes = require('./src/routes/ecoleRoutes');
 const creneauRoutes = require('./src/routes/creneauRoutes');
+const droitRoutes = require('./src/routes/droitRoutes');
+const matiereRoutes = require('./src/routes/matiereRoutes');
+const postbacRoutes = require('./src/routes/postbacRoutes');
+const promotionRoutes = require('./src/routes/promotionRoutes');
+const roleRoutes = require('./src/routes/roleRoutes');
+const salleRoutes = require('./src/routes/salleRoutes');
+const specialiteRoutes = require('./src/routes/specialiteRoutes');
+const typeSalleRoutes = require('./src/routes/typeSalleRoutes');
 
 
 //fichier variable d env
@@ -34,6 +42,14 @@ app.use('/responsablePeda', responsablePedaRoutes);
 app.use('/direction', directionRoutes);
 app.use('/ecole', ecoleRoutes);
 app.use('/creneau', creneauRoutes);
+app.use('/droit', droitRoutes);
+app.use('/matiere', matiereRoutes);
+app.use('/postbac', postbacRoutes);
+app.use('/promotion', promotionRoutes);
+app.use('/role', roleRoutes);
+app.use('/salle', salleRoutes);
+app.use('/specialite', specialiteRoutes);
+app.use('/typeSalle', typeSalleRoutes);
 
 app.use('/', (req, res, next) => {
     res.status(200).json({ serverPort: `${PORT}`, status: 'running' });
