@@ -2,6 +2,17 @@ const express = require('express');
 const etudiantRoutes = express.Router();
 const pool = require('../../helpers/dbConfig');
 
+//obtenir la liste des etudiants
+etudiantRoutes.get('/', async function(req, res) {
+    try {
+        const sqlQuery = 'SELECT code_utilisateur, nom, prenom, mail, code_ecole, code_promotion, etu_nb_retard, etu_nb_absence FROM signature.utilisateur WHERE code_role = 1';
+        const rows = await pool.query(sqlQuery);
+            
+         res.status(200).json(rows);
+        } catch (error) {
+            res.status(400).send(error.message);
+        }
+});
 
 //obtenir les infos etudiant par son id
 etudiantRoutes.get('/:id', async function(req, res) {
@@ -15,6 +26,31 @@ etudiantRoutes.get('/:id', async function(req, res) {
     }
 
     res.status(200).json({id:req.params.id})
+});
+
+//obtenir les etudiants d une ecole par id ecole
+etudiantRoutes.get('/ecole/:id', async function(req, res) {
+    try {
+        const sqlQuery = 'SELECT code_utilisateur, nom, prenom, mail, code_ecole, code_promotion, etu_nb_retard, etu_nb_absence FROM signature.utilisateur WHERE code_role = 1 AND code_ecole=?'
+        const rows = await pool.query(sqlQuery, req.params.id)
+        res.status(200).json(rows);
+        return;
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+
+    res.status(200).json({id:req.params.id})
+});
+
+//obtenir les etudiants d une promotion
+etudiantRoutes.get('/promotion/:id', async function(req, res) {
+    try {
+        const sqlQuery = 'SELECT * FROM signature.utilisateur WHERE code_role = 1 AND code_promotion = ?';
+        const rows = await pool.query(sqlQuery, [req.params.id]);
+        res.status(200).json(rows);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
 });
 
 //ajouter un etudiant

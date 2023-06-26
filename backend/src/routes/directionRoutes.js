@@ -2,6 +2,17 @@ const express = require('express');
 const directionRoutes = express.Router();
 const pool = require('../../helpers/dbConfig');
 
+//obtenir la liste des directeurs
+directionRoutes.get('/', async function(req, res) {
+    try {
+        const sqlQuery = 'SELECT code_utilisateur, nom, prenom, mail, adm_service FROM signature.utilisateur WHERE code_droit = 4';
+        const rows = await pool.query(sqlQuery);
+            
+         res.status(200).json(rows);
+        } catch (error) {
+            res.status(400).send(error.message);
+        }
+});
 
 //obtenir les infos directeur par son id
 directionRoutes.get('/:id', async function(req, res) {

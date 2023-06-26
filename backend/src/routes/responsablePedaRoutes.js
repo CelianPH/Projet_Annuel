@@ -2,6 +2,17 @@ const express = require('express');
 const responsablePedaRoutes = express.Router();
 const pool = require('../../helpers/dbConfig');
 
+//obtenir la liste des responsable pedagogique
+responsablePedaRoutes.get('/', async function(req, res) {
+    try {
+        const sqlQuery = 'SELECT code_utilisateur, nom, prenom, mail, adm_service, code_ecole FROM signature.utilisateur WHERE code_droit = 3';
+        const rows = await pool.query(sqlQuery);
+            
+         res.status(200).json(rows);
+        } catch (error) {
+            res.status(400).send(error.message);
+        }
+});
 
 //obtenir les infos responsableProm par son id
 responsablePedaRoutes.get('/:id', async function(req, res) {

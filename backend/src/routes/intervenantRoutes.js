@@ -2,6 +2,17 @@ const express = require('express');
 const intervenantRoutes = express.Router();
 const pool = require('../../helpers/dbConfig');
 
+//obtenir la liste des intervenants
+intervenantRoutes.get('/', async function(req, res) {
+    try {
+        const sqlQuery = 'SELECT code_utilisateur, nom, prenom, mail, int_societe FROM signature.utilisateur WHERE code_role = 3';
+        const rows = await pool.query(sqlQuery);
+            
+         res.status(200).json(rows);
+        } catch (error) {
+            res.status(400).send(error.message);
+        }
+});
 
 //obtenir les infos etudiant par son id
 intervenantRoutes.get('/:id', async function(req, res) {

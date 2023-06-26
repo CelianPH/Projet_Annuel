@@ -9,6 +9,8 @@ const intervenantRoutes = require('./src/routes/intervenantRoutes');
 const attachePromRoutes = require('./src/routes/attachePromRoutes');
 const responsablePedaRoutes = require('./src/routes/responsablePedaRoutes');
 const directionRoutes = require('./src/routes/directionRoutes');
+const ecoleRoutes = require('./src/routes/ecoleRoutes');
+const creneauRoutes = require('./src/routes/creneauRoutes');
 
 
 //fichier variable d env
@@ -30,6 +32,8 @@ app.use('/intervenant', intervenantRoutes);
 app.use('/attacheProm', attachePromRoutes);
 app.use('/responsablePeda', responsablePedaRoutes);
 app.use('/direction', directionRoutes);
+app.use('/ecole', ecoleRoutes);
+app.use('/creneau', creneauRoutes);
 
 app.use('/', (req, res, next) => {
     res.status(200).json({ serverPort: `${PORT}`, status: 'running' });
