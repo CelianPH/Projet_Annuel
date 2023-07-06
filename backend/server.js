@@ -31,6 +31,7 @@ const app = express();
 //middleware
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(cors());
 
 //passage des routes
 //signRoutes(app);
