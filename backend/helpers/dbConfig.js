@@ -1,15 +1,15 @@
 const mariadb = require('mariadb');
 const pool = mariadb.createPool({
-    //host: process.env.DB_HOST,
-    //user: process.env.DB_USER,
-    //password: process.env.DB_PASS,
-    //database: process.env.DB_NAME,
-    //connectionLimit: 5
-    host: '10.1.1.12',
-    user: 'signuser',
-    password: 'pwdsignuser',
-    database: 'signature',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
     connectionLimit: 5
+    //host: '10.1.1.12',
+    //user: 'signuser',
+    //password: 'pwdsignuser',
+    //database: 'signature',
+    //connectionLimit: 5
 
 });
 
