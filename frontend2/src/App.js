@@ -1,27 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import React, { useEffect, useState } from 'react';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const StudentList = () => {
-  const [students, setStudents] = useState([]);
+import Login from "./page/login.js";
+import Test from "./page/test.js";
 
-  useEffect(() => {
-    fetch('http://10.1.1.11:3001/etudiant/')
-      .then(response => response.json())
-      .then(data => setStudents(data))
-      .catch(error => console.log(error));
-  }, []);
+
+function App() {
 
   return (
-    <div>
-      <h1>Liste des étudiants</h1>
-      <ul>
-        {students.map(student => (
-          <li key={student.prenom}>{student.prenom}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/test" element={<Test />} />
 
-export default StudentList;
+        {/* /**<Route path="*" element={< />} /> */}
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
