@@ -5,9 +5,9 @@ const pool = mariadb.createPool({
     //password: process.env.DB_PASS,
     //database: process.env.DB_NAME,
     //connectionLimit: 5
-    host: 'localhost',
-    user: 'all',
-    password: '',
+    host: '10.1.1.12',
+    user: 'signuser',
+    password: 'pwdsignuser',
     database: 'signature',
     connectionLimit: 5
 
