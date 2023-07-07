@@ -18,7 +18,7 @@ salleRoutes.get('/', async function(req, res) {
 //obtenir les infos salle par son id
 salleRoutes.get('/:id', async function(req, res) {
     try {
-        const sqlQuery = 'SELECT * FROM signature.salle WHERE code_salle = ?'
+        const sqlQuery = 'SELECT * FROM signature.salle WHERE num_salle = ?'
         const rows = await pool.query(sqlQuery, req.params.id)
         res.status(200).json(rows);
         return;
