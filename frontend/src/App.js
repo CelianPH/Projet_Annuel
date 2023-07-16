@@ -1,31 +1,29 @@
-import React, { Component } from "react";
-import "./styles.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./css/App.css";
+import Sidenav from "./composant/navbar";
+import Planning from "./page/Planning";
+import Home from "./page/Home";
+import Justificatifs from "./page/Justificatifs";
+import Statistics from "./page/Statistics";
+import Login from "./page/login";
 
-class App extends Component {
-  state = {
-    post: {}
-  };
-
-  useEffect() {
-    fetch("http://10.1.1.11:3001/etudiant/1")
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        setTimeout(() => {
-          this.setState({ post: result });
-        });
-      });
-  }
-
-  render() {
-    return (
+function App() {
+  return (
+    <BrowserRouter>
       <div className="App">
-        <h1>Liste d'étudiants :</h1>
-        {this.state.post.prenom ? this.state.post.prenom : <p>Chargement...</p>}
+        <Sidenav />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/planning" element={<Planning />} />
+            <Route path="/statistics" element={<Statistics />} />
+            <Route path="/Justificatifs" element={<Justificatifs />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </main>
       </div>
-    );
-  }
+    </BrowserRouter>
+  );
 }
 
 export default App;
