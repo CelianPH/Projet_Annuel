@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
 //fichier de route
+const connexionRoutes = require('./src/routes/connexionRoutes');
 const etudiantRoutes = require('./src/routes/etudiantRoutes');
 const intervenantRoutes = require('./src/routes/intervenantRoutes');
 const attachePromRoutes = require('./src/routes/attachePromRoutes');
@@ -37,6 +38,7 @@ app.use(cors());
 //passage des routes
 //signRoutes(app);
 //app.use('/', signRoutes);
+app.use('/connexion', connexionRoutes);
 app.use('/etudiant', etudiantRoutes);
 app.use('/intervenant', intervenantRoutes);
 app.use('/attacheProm', attachePromRoutes);
