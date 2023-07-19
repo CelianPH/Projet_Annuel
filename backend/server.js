@@ -21,6 +21,7 @@ const roleRoutes = require('./src/routes/roleRoutes');
 const salleRoutes = require('./src/routes/salleRoutes');
 const specialiteRoutes = require('./src/routes/specialiteRoutes');
 const typeSalleRoutes = require('./src/routes/typeSalleRoutes');
+const coursRoutes = require('./src/routes/coursRoutes');
 
 
 //fichier variable d env
@@ -54,6 +55,7 @@ app.use('/role', roleRoutes);
 app.use('/salle', salleRoutes);
 app.use('/specialite', specialiteRoutes);
 app.use('/typeSalle', typeSalleRoutes);
+app.use('/cours', coursRoutes);
 
 app.use('/', (req, res, next) => {
     res.status(200).json({ serverPort: `${PORT}`, status: 'running' });
